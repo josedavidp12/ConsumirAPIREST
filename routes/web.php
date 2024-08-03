@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PeopleController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Http;
 use App\Http\Controllers\CategoryController;
@@ -20,3 +21,11 @@ Route::post('/category', [CategoryController::class, 'store']) ->name('category.
 Route::get('/category{idCategory}', [CategoryController::class, 'view']) ->name('category.view');
 Route::post('/category/update',[CategoryController::class, 'update']) ->name('category.update');
 Route::get('/category/delete/{id}', [CategoryController::class, 'delete']) ->name('category.delete');
+
+
+Route::get('/', [PeopleController::class, 'index'])->name('people.index');
+Route::get('/people', [PeopleController::class, 'create'])->name('people.create');
+Route::post('/people', [PeopleController::class, 'store']) ->name('people.store');
+Route::get('/people{idPeople}', [PeopleController::class, 'view']) ->name('people.view');
+Route::post('/people/update',[PeopleController::class, 'update']) ->name('people.update');
+Route::get('/peoplery/delete/{id}', [PeopleController::class, 'delete']) ->name('people.delete');
