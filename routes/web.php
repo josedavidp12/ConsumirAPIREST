@@ -24,8 +24,8 @@ Route::get('/category/delete/{id}', [CategoryController::class, 'delete']) ->nam
 
 
 Route::get('/', [PeopleController::class, 'index'])->name('people.index');
-Route::get('/people', [PeopleController::class, 'create'])->name('people.create');
-Route::post('/people', [PeopleController::class, 'store']) ->name('people.store');
-Route::get('/people{idPeople}', [PeopleController::class, 'view']) ->name('people.view');
-Route::post('/people/update',[PeopleController::class, 'update']) ->name('people.update');
-Route::get('/peoplery/delete/{id}', [PeopleController::class, 'delete']) ->name('people.delete');
+Route::get('/people/create', [PeopleController::class, 'create'])->name('people.create');
+Route::post('/people', [PeopleController::class, 'store'])->name('people.store');
+Route::get('/people/{idPeople}', [PeopleController::class, 'view'])->name('people.view');
+Route::put('/people/{idPeople}', [PeopleController::class, 'update'])->name('people.update');
+Route::delete('/people/{id}', [PeopleController::class, 'delete'])->name('people.delete');
