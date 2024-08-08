@@ -25,28 +25,29 @@
                 </tr>
             </thead>
             <tbody>
-            @if(is_array($data) || is_object($data))
-                @foreach($data as $people)
+                @if(is_array($data) || is_object($data))
+                    @foreach($data as $people)
+                        <tr>
+                            <td>{{ $people['name'] }}</td>
+                            <td>{{ $people['telefono'] }}</td>
+                            <td>{{ $people['direccion'] }}</td>
+                            <td>
+                                <!-- Formulario para eliminar -->
+                                <form action="{{ route('people.delete', $people['id']) }}" method="POST"
+                                    style="display:inline;">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger btn-sm">Borrar</button>
+                                </form>
+                                <a href="{{ route('people.view', $people['id']) }}" class="btn btn-primary btn-sm">Ver</a>
+                            </td>
+                        </tr>
+                    @endforeach
+                @else
                     <tr>
-                        <td>{{ $people['name'] }}</td>
-                        <td>{{ $people['telefono'] }}</td>
-                        <td>{{ $people['direccion'] }}</td>
-                        <td>
-                            <!-- Formulario para eliminar -->
-                            <form action="{{ route('people.delete', $people['id']) }}" method="POST" style="display:inline;">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-sm">Borrar</button>
-                            </form>
-                            <a href="{{ route('people.view', $people['id']) }}" class="btn btn-primary btn-sm">Ver</a>
-                        </td>
+                        <td colspan="4">No hay datos disponibles.</td>
                     </tr>
-                @endforeach
-            @else
-                <tr>
-                    <td colspan="4">No hay datos disponibles.</td>
-                </tr>
-            @endif
+                @endif
             </tbody>
         </table>
 
